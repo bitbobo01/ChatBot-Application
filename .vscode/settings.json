@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./UserManager",
+        "./FileProcessing"
+    ]
+}

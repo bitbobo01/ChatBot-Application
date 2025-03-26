@@ -1,0 +1,40 @@
+xài gemeni, xem thử, nó free + api free
+hỏi chat gpt về project
+
+Document (viết lại ref theo bạn Hiền)
+	1.thêm phần mục tiêu, giải pháp, đóng góp (contribution)
+	2.có thể sử dụng chat GPT để viết 
+	3.Viết xong nhớ check lại = tiếng việt để xem nó viết đúng ko
+	4.References làm bằng tay
+
+
+Viết SDLC (software development life cycle) document
+
+Đóng góp: Mô hình hệ thống, giải thuật truy xuất thông tin
+
+Viết App (mobile hoặc bất kỳ làm trên unity) - yêu cầu 
+Admin - HR - nhân viên 
+Admin -> Quản lý user
+HR -> quản lý nhân viên (tự đưa ra feature dựa trên nhu cầu HR của cty)
+Nhân viên -> feature dựa trên nhu cầu mỗi người
+
+
+
+To do:
+ko có giải pháp tóm tắt dữ liệu tiếng việt local nên phải xài gpt
+
+Phân loại category:
+trước khi phân loại văn bản, để tránh ko nhất quán, để cho gpt đọc trước category đã dc định danh trước
+phải tạo mẫu category trước để cho gpt đọc trước để phân loại cho nhất quán
+ko dc xóa category mẫu định danh trước tránh hư cây category
+
+>>>Vẽ lại: (QUAN TRỌNG)
+-kiến trúc hệ thống (mô hình sử dụng, db, các công nghệ sử dụng,...)
+-data-flow diagram (tìm hiểu trước khi làm) (QUAN TRỌNG)
+-Flow-chart (vẽ để trình bày giải thuật của chatGPT)
+
+-usecase (optional)
+-activity diagram (optional)
+để nhìn rõ hơn về luồng chương trình
+tham khảo bài của a Hiền
+

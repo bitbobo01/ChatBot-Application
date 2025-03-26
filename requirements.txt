@@ -1,0 +1,15 @@
+fastapi
+pydantic
+pymongo
+openai
+python-dotenv
+bcrypt==3.2.0
+uvicorn
+passlib
+pyjwt
+pydantic[email]
+pdfplumber 
+python-docx 
+pytesseract 
+pillow
+cryptography==41.0.3
