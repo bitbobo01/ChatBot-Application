@@ -5,6 +5,7 @@ from docx import Document
 import io,sys,os
 from dotenv import load_dotenv
 from openai import OpenAI
+from FileProcessing.TextProcessing import process_document
 # Thêm thư mục gốc vào sys.path
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
 from chatgptModule import client
@@ -22,15 +23,18 @@ def process_with_gpt(content):
     if not content.strip():
         return "Không tìm thấy nội dung quan trọng trong tài liệu."
 
-    response = client.chat.completions.create(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": "Bạn là một trợ lý AI chuyên xử lý văn bản. Hãy tóm tắt nội dung tài liệu bằng tiếng Việt."},
-            {"role": "user", "content": f"Hãy tóm tắt tài liệu sau bằng tiếng Việt:\n\n{content}"}
-        ],
-        max_tokens=500
-    )
-    answer = response.choices[0].message.content
+    # response = client.chat.completions.create(
+    #     model="gpt-4o",
+    #     messages=[
+    #         {"role": "system", "content": "Bạn là một trợ lý AI chuyên xử lý văn bản. Hãy tóm tắt nội dung tài liệu bằng tiếng Việt và phải đảm bảo giữ lại được tất cả nội dung."},
+    #         {"role": "user", "content": f"Hãy tóm tắt tài liệu sau bằng tiếng Việt:\n\n{content}"}
+    #     ],
+    #     max_tokens=2000
+    # )
+    # answer = response.choices[0].message.content
+    # print("answer:", answer)  # Debugging line
+    answer = content
+    process_document(answer)  # Gọi hàm xử lý tài liệu
     return answer
 
 # Gửi ảnh lên GPT-4o để phân tích
@@ -97,25 +101,6 @@ def read_docx(file):
     combined_text = text + "\n[Extracted from images]\n" + images_text
     return process_with_gpt(combined_text) if combined_text.strip() else "No text found in DOCX."
 
-
-# Hàm đọc nội dung file bất kỳ dựa trên loại file
-def read_file(filename):
-    file_path = os.path.join(UPLOAD_DIR, filename)
-
-    if not os.path.exists(file_path):
-        return {"error": "File not found"}
-
-    ext = filename.split(".")[-1].lower()
-    if ext == "pdf":
-        content = read_pdf(file_path)
-    elif ext == "docx":
-        content = read_docx(file_path)
-    elif ext in ["png", "jpg", "jpeg", "bmp"]:
-        content = read_image(file_path)
-    else:
-        return {"error": "Unsupported file type"}
-
-    return {"filename": filename, "content": content}
 
 # Hàm đọc nội dung file từ UploadFile
 def read_uploaded_file(file: io.BytesIO, filename: str):

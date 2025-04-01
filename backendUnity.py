@@ -40,7 +40,7 @@ async def ask_chatbot(username: str, query: str):
         return {"error": "User not found"}
     
     categories = get_catergory_base_on_content(query)
-    
+    print("User ask "+"categories: ", categories)
     # Lấy tất cả _id của các category
     category_ids = [cat["_id"] for cat in categories]
     
@@ -90,7 +90,6 @@ async def upload_document(
 
     # Đọc nội dung file ngay sau khi upload
     file_content = read_uploaded_file(io.BytesIO(await file.read()), file.filename)
-
     # Trả về nội dung file thay vì lưu vào local
     return {
         "message": "File processed successfully",

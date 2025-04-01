@@ -15,6 +15,13 @@ def get_category_tree():
     """Lấy danh sách category từ MongoDB"""
     categories = list(categories_collection.find({}, {"_id": 1, "name": 1}))
     return [{"id": str(cat["_id"]), "name": cat["name"]} for cat in categories]
+def debug_category_tree():
+    categories = get_category_tree()
+    i=0
+    for category in categories:
+        i+=1
+        print(f"{i}. {category['name']}")
+debug_category_tree()
 def get_catergory_base_on_content(content):
     categories = get_category_tree()
     category_names = [cat["name"] for cat in categories]
@@ -87,6 +94,7 @@ def save_summary(summary, category_name):
         "summary": summary,
         "created_at": datetime.datetime.utcnow()
     }
+    print("📝 Lưu tóm tắt:", summary_data)
     summaries_collection.insert_one(summary_data)
     return summary_data
 
